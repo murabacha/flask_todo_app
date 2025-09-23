@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>Login</h1>
+    <form action="" method="POST">
+        {{ form.hidden_tag() }}
+        
+        {{form.email.label(class="form-label")}}
+        {%if form.email.errors%}
+            {{form.email(class="form-control-danger")}}
+            {%for error in form.email.errors%}
+                <p class="text-danger">{{error}}</p>
+            {%endfor%}
+        {%else%}
+            {{form.email(class="form-control")}}
+        {%endif%}
+
+        {{form.password.label(class="form-label")}}
+        {%if form.password.errors%}    
+            {{form.password(class="form-control-danger")}}
+            {%for error in form.password.errors%}
+                <p class="text-danger">{{error}}</p>
+            {%endfor%}
+        {%else%}
+            {{form.password(class="form-control")}}
+        {%endif%}
+
+        <div class="form-check-label">
+            {{ form.remember.label}}
+            {{ form.remember() }}
+        </div>
+
+        {{form.submit(class="btn ")}}
+        <p>Don't have an account? </p> <a href="{{url_for('register')}}">Register</a>
+    </form>
+    <style>
+        p {
+            text-align: left;
+            color: #45a049;
+        }
+        h1 {
+            text-align: center;
+        }
+        .btn {
+            margin-top: 10px;
+            margin-bottom: 10px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: #45a049;
+        }
+        .form-check-label {
+            margin-right: 10px;
+            color: rgb(0, 77, 51);
+            margin-top: 15px;
+            margin-top: 15px;
+        }
+        form {
+            margin-top: 20px;
+            width: 300px;
+            margin-left: auto;
+            margin-right: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: left;
+        }
+        .form-label {
+            margin-top: 10px;
+            margin-bottom: 15px;
+        }
+        .form-control {
+            margin-top: 5px;
+            padding: 5px 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .form-control-danger {
+            border: 1px solid red;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+        .btn {
+            margin-top: 10px;
+        }
+        .text-danger {
+            color: red;
+        }
+    </style>
+{% endblock %}

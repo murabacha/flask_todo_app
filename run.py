@@ -1,2 +1,4 @@
-from todo_app import app
+from todo_app import app,db
+with app.app_context():
+    db.create_all()
 app.run(debug=True)

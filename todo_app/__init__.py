@@ -4,10 +4,6 @@ from flask_sqlalchemy import SQLAlchemy
 import os
 
 
-
-
-
-
 secret_key = os.urandom(24).hex()
 
 app = Flask(__name__)

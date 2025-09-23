@@ -4,14 +4,14 @@
     <h1>My Todo List</h1>
     <table>
         <tr>
-            <th>Title</th>
-            <th>Description</th>
-            <th>Date Added</th>
-            <th>Due Date</th>
-            <th>Complete</th>
-            <th>Actions</th>
-            
+            <th id="title" scope="col">Title</th>
+            <th id="description" scope="col">Description</th>
+            <th id="date_added" scope="col">Date Added</th>
+            <th id="date_ending" scope="col">Due Date</th>
+            <th id="complete" scope="col">Complete</th>
+            <th id="actions" scope="col">Actions</th>
         </tr>
+        
         {% for todo in todos %}
             <tr>
                 <td>{{ todo.title }}</td>
@@ -26,4 +26,35 @@
             </tr>
         {% endfor %}
     </table>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        tr:hover {
+            background-color: #ddd;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
 {%endblock%}

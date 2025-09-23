@@ -1,5 +1,5 @@
 from todo_app import  db
-import datetime
+from datetime import datetime
 from flask_login import UserMixin
 
 
