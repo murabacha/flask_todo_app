@@ -1,0 +1,29 @@
+{%extends 'base.html'%}
+{%block content%}
+
+    <h1>My Todo List</h1>
+    <table>
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Date Added</th>
+            <th>Due Date</th>
+            <th>Complete</th>
+            <th>Actions</th>
+            
+        </tr>
+        {% for todo in todos %}
+            <tr>
+                <td>{{ todo.title }}</td>
+                <td>{{ todo.description }}</td>
+                <td>{{ todo.date_added }}</td></td>
+                <td>{{ todo.date_ending }}</td>
+                <td>{{ todo.complete }}</td>
+                <td>
+                    <a href="delete"><button>Delete</button></a>
+                    <a href="edit"><button>Edit</button></a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+{%endblock%}

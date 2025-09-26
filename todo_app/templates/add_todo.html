@@ -1,0 +1,41 @@
+{%extends 'base.html'%}
+{%block content%}
+    <h1>Add Todo</h1>
+    <form action="" method="POST" enctype="multipart/form-data">
+        {{ form.hidden_tag() }}
+        
+        {{form.title.label(class="form-label")}}
+        {%if form.title.errors%}
+            {{form.title(class="form-control")}}
+            {%for error in form.title.errors%}
+                <p class="text-danger">{{error}}</p>
+            {%endfor%}
+        {%else%}
+            {{form.title(class="form-control")}}
+        {%endif%}
+        
+        {{form.description.label(class="form-label")}}
+        {%if form.description.errors%}
+            {{form.description(class="form-control")}}
+            {%for error in form.description.errors%}
+                <p class="text-danger">{{error}}</p>
+            {%endfor%}
+        {%else%}
+            {{form.description(class="form-control")}}
+        {%endif%}
+
+        {{form.date_ending.label(class="form-label")}}
+        {%if form.date_ending.errors%}
+            {{form.date_ending(class="form-control")}}
+            {%for error in form.date_ending.errors%}
+                <p class="text-danger">{{error}}</p>
+            {%endfor%}
+        {%else%}
+            {{form.date_ending(class="form-control")}}
+        {%endif%}
+
+        {{form.submit(class="btn btn-primary")}}
+    </form>
+{%endblock%}
+
+    </form>
