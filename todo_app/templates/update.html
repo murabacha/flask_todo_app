@@ -1,0 +1,81 @@
+{%extends 'base.html'%}
+
+{%block content%}
+    <h1>Add Todo</h1>
+    <form action="" method="POST">
+
+        {{ form.hidden_tag() }}
+        
+        {{form.title.label(class="form-label")}}
+        {%if form.title.errors%}
+            {{form.title(class="form-control")}}
+            {%for error in form.title.errors%}
+                <p class="text-danger">{{error}}</p>
+            {%endfor%}
+        {%else%}
+            {{form.title(class="form-control")}}
+        {%endif%}
+        
+        {{form.description.label(class="form-label")}}
+        {%if form.description.errors%}
+            {{form.description(class="form-control")}}
+            {%for error in form.description.errors%}
+                <p class="text-danger">{{error}}</p>
+            {%endfor%}
+        {%else%}
+            {{form.description(class="form-control")}}
+        {%endif%}
+
+        {{form.date_ending.label(class="form-label")}}
+        {%if form.date_ending.errors%}
+            {{form.date_ending(class="form-control")}}
+            {%for error in form.date_ending.errors%}
+                <p class="text-danger">{{error}}</p>
+            {%endfor%}
+        {%else%}
+            {{form.date_ending(class="form-control")}}
+        {%endif%}
+
+        {{form.submit(class="btn btn-primary")}}
+    </form>
+    <style>
+        h1 {
+            text-align: center;
+        }
+        form {
+            margin-top: 20px;
+            width: 300px;
+            margin-left: auto;
+            margin-right: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: left;
+        }
+        .form-label {
+            margin-top: 10px;
+            margin-bottom: 15px;
+        }
+        .form-control {
+            margin-top: 5px;
+            padding: 5px 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .btn {
+            margin-top: 30px;
+            margin-bottom: 30px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: #45a049;
+        }
+        .text-danger {
+            color: red;
+        }
+    </style>
+{%endblock%}

@@ -8,7 +8,6 @@
             <th id="description" scope="col">Description</th>
             <th id="date_added" scope="col">Date Added</th>
             <th id="date_ending" scope="col">Due Date</th>
-            <th id="complete" scope="col">Complete</th>
             <th id="actions" scope="col">Actions</th>
         </tr>
         
@@ -18,15 +17,32 @@
                 <td>{{ todo.description }}</td>
                 <td>{{ todo.date_added }}</td></td>
                 <td>{{ todo.date_ending }}</td>
-                <td>{{ todo.complete }}</td>
                 <td>
-                    <a href="delete"><button>Delete</button></a>
-                    <a href="edit"><button>Edit</button></a>
+                    <a href="{{ url_for('delete', todo_id=(todo.id))}}"><button>Delete</button></a>
+                    <a href="{{ url_for('update', todo_id=(todo.id))}}"><button>Edit</button></a>
                 </td>
             </tr>
         {% endfor %}
     </table>
     <style>
+        h1 {
+            text-align: center;
+        }
+        #actions {
+            width: 10%;
+        }
+        #title {
+            width: 10%;
+        }
+        #description {
+            width: 40%;
+        }
+        #date_added {
+            width: 20%;
+        }
+        #date_ending {
+            width: 20%;
+        }
         table {
             width: 100%;
             border-collapse: collapse;

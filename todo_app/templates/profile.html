@@ -1,0 +1,164 @@
+{%extends 'base.html'%}
+
+{%block content%}
+    <h1>Profile</h1>
+    {%if current_user.is_authenticated%}
+    <div class="profile">
+        <img src="{{url_for('static', filename='profile_pics/' + current_user.image_file)}}"  alt="profile picture">
+        <div class="profile-info">
+            <p> {{current_user.username}}</p>
+            <p id="email">{{current_user.email}}</p>
+        </div>
+    </div>
+    <div class="update-profile">
+        <h1>Update Profile</h1>
+        <form action="" method="POST" enctype="multipart/form-data">
+            {{ form.hidden_tag() }}
+            {{ form.username.label(class="form-label") }}
+            {%if form.username.errors%}
+                {{ form.username(class="form-control-danger") }}
+                {%for error in form.username.errors%}
+                    <p class="text-danger">{{error}}</p>
+                {%endfor%}
+            {%else%}
+                {{ form.username(class="form-control") }}
+            {%endif%}
+            {{ form.email.label(class="form-label") }}
+            {%if form.email.errors%}
+                {{ form.email(class="form-control-danger") }}
+                {%for error in form.email.errors%}
+                    <p class="text-danger">{{error}}</p>
+                {%endfor%}
+            {%else%}
+                {{ form.email(class="form-control") }}
+            {%endif%}
+            {{ form.image_file.label(class="form-label") }}
+            {%if form.image_file.errors%}
+                {{ form.image_file(class="form-control-danger") }}
+                {%for error in form.image_file.errors%}
+                    <p class="text-danger">{{error}}</p>
+                {%endfor%}
+            {%else%}
+                {{ form.image_file(class="form-control") }}
+            {%endif%}
+            {{ form.submit(class="btn ") }}
+        </form>
+    </div>
+    {%else%}
+        <p>Not logged in</p>
+    {%endif%}
+    <style>
+        .text-danger{
+            color: red;
+        }
+        .form-label{
+            margin-top: 10px;
+            margin-bottom: 15px;
+        }
+        .form-control{
+            margin-top: 5px;
+            padding: 5px 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .form-control-danger{
+            margin-top: 5px;
+            padding: 5px 10px;
+            border: 1px solid red;
+            border-radius: 5px;
+        }
+        .btn{
+            margin-top: 30px;
+            margin-bottom: 30px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .btn:hover{
+            background-color: #45a049;
+        }
+        .update-profile{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .update-profile h1{
+            text-align: center;
+        }
+        .update-profile form{
+            margin-top: 20px;
+            width: 300px;
+            margin-left: auto;
+            margin-right: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: left;
+        }
+        .update-profile form label{
+            margin-top: 10px;
+            margin-bottom: 15px;
+        }
+        .update-profile form input{
+            margin-top: 5px;
+            padding: 5px 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .update-profile form button{
+            margin-top: 30px;
+            margin-bottom: 30px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .update-profile form button:hover{
+            background-color: #45a049;
+        }
+        h1{
+            text-align: center;
+        }
+        #email{
+            margin-top: 20px;
+            margin-left: 10px;
+            font-size: 25px;
+            font-weight: bold;
+            color: #534e4e;
+            text-align: left;
+        }
+        .profile{
+            display: flex;
+            align-items: center;
+            justify-content: left;
+            margin-top: 20px;
+            margin-left: 30px;
+        }
+        .profile-info{
+            margin-left: 40px;
+        }
+        .profile-info p{
+            margin: 0;
+            margin-left: 10px;
+            padding: 0;
+            margin-bottom: 10px;
+            font-size: 25px;
+            font-weight: bold;
+            color: #000;
+            text-align: left;
+
+        }
+       
+        img{
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+        }   
+    </style>
+{%endblock%}
