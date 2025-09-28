@@ -107,11 +107,12 @@ def profile():
     if form.validate_on_submit():
         current_user.username = form.username.data
         current_user.email = form.email.data
-        picture_name = save_picture(form.image_file.data)
-        current_image = current_user.image_file
-        if current_image != 'default.jpg':
-            os.remove(os.path.join(app.root_path, 'static/profile_pics', current_image))
-        current_user.image_file = picture_name
+        if form.image_file.data:
+            picture_name = save_picture(form.image_file.data)
+            current_image = current_user.image_file
+            if current_image != 'default.jpg':
+                os.remove(os.path.join(app.root_path, 'static/profile_pics', current_image))
+            current_user.image_file = picture_name
         db.session.commit()
         flash('Your account has been updated!', 'success')
         return redirect(url_for('profile'))
